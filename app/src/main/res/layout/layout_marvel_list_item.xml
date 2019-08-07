@@ -3,7 +3,10 @@
                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                    xmlns:tools="http://schemas.android.com/tools"
                                    android:layout_width="match_parent"
-                                   android:layout_height="wrap_content">
+                                   android:layout_height="wrap_content"
+                                   app:cardCornerRadius="4dp"
+                                   app:cardPreventCornerOverlap="true"
+                                   app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -11,12 +14,13 @@
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="300dp"
             android:contentDescription="Marvel character image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/avatars"/>
 
         <TextView
