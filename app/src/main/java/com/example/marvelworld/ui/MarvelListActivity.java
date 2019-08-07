@@ -1,13 +1,15 @@
-package com.example.marvelworld;
+package com.example.marvelworld.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MarvelDetailActivity extends AppCompatActivity {
+import com.example.marvelworld.R;
+
+public class MarvelListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_marvel_detail);
+        setContentView(R.layout.activity_main);
     }
 }
