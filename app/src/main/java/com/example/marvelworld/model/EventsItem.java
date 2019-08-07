@@ -1,9 +1,9 @@
-package com.example.marvelworld.data;
+package com.example.marvelworld.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class SeriesItem {
+public class EventsItem {
 
     @SerializedName("resourceURI")
     @Expose

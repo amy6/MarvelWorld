@@ -1,11 +1,11 @@
-package com.example.marvelworld.data;
+package com.example.marvelworld.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Comics {
+public class Stories {
 
     @SerializedName("available")
     @Expose
@@ -15,7 +15,7 @@ public class Comics {
     private String collectionURI;
     @SerializedName("items")
     @Expose
-    private List<ComicsItem> comicsItems = null;
+    private List<StoriesItem> items = null;
     @SerializedName("returned")
     @Expose
     private Integer returned;
@@ -36,12 +36,12 @@ public class Comics {
         this.collectionURI = collectionURI;
     }
 
-    public List<ComicsItem> getComicsItems() {
-        return comicsItems;
+    public List<StoriesItem> getItems() {
+        return items;
     }
 
-    public void setComicsItems(List<ComicsItem> comicsItems) {
-        this.comicsItems = comicsItems;
+    public void setItems(List<StoriesItem> items) {
+        this.items = items;
     }
 
     public Integer getReturned() {
