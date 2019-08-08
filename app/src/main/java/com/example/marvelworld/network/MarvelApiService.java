@@ -11,8 +11,13 @@ import retrofit2.http.Query;
 public interface MarvelApiService {
 
     @GET("v1/public/characters")
-    Call<MarvelApiResponse> getMarvelCharacters(@Query("apiKey") String apiKey);
+    Call<MarvelApiResponse> getMarvelCharacters(@Query("ts") long timestamp,
+                                                @Query("apikey") String apiKey,
+                                                @Query("hash") String hash);
 
     @GET("v1/public/characters/{characterId}")
-    MarvelCharacter getMarvelCharacter(@Query("apiKey") String apiKey, @Path("id") int characterId);
+    MarvelCharacter getMarvelCharacter(@Query("ts") long timestamp,
+                                       @Query("apikey") String apiKey,
+                                       @Query("hash") String hash,
+                                       @Path("id") int characterId);
 }

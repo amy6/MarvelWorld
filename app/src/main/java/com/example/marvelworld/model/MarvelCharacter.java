@@ -5,8 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import retrofit2.http.Url;
-
 public class MarvelCharacter {
 
     @SerializedName("id")

@@ -3,63 +3,83 @@ package com.example.marvelworld.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 public class MarvelApiResponse {
 
-        @SerializedName("offset")
-        @Expose
-        private Integer offset;
-        @SerializedName("limit")
-        @Expose
-        private Integer limit;
-        @SerializedName("total")
-        @Expose
-        private Integer total;
-        @SerializedName("count")
-        @Expose
-        private Integer count;
-        @SerializedName("results")
-        @Expose
-        private List<MarvelCharacter> marvelCharacters = null;
+    @SerializedName("code")
+    @Expose
+    private Integer code;
+    @SerializedName("status")
+    @Expose
+    private String status;
+    @SerializedName("copyright")
+    @Expose
+    private String copyright;
+    @SerializedName("attributionText")
+    @Expose
+    private String attributionText;
+    @SerializedName("attributionHTML")
+    @Expose
+    private String attributionHTML;
+    @SerializedName("etag")
+    @Expose
+    private String etag;
+    @SerializedName("data")
+    @Expose
+    private MarvelApiData marvelApiData;
 
-        public Integer getOffset() {
-            return offset;
-        }
+    public Integer getCode() {
+        return code;
+    }
 
-        public void setOffset(Integer offset) {
-            this.offset = offset;
-        }
+    public void setCode(Integer code) {
+        this.code = code;
+    }
 
-        public Integer getLimit() {
-            return limit;
-        }
+    public String getStatus() {
+        return status;
+    }
 
-        public void setLimit(Integer limit) {
-            this.limit = limit;
-        }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-        public Integer getTotal() {
-            return total;
-        }
+    public String getCopyright() {
+        return copyright;
+    }
 
-        public void setTotal(Integer total) {
-            this.total = total;
-        }
+    public void setCopyright(String copyright) {
+        this.copyright = copyright;
+    }
 
-        public Integer getCount() {
-            return count;
-        }
+    public String getAttributionText() {
+        return attributionText;
+    }
 
-        public void setCount(Integer count) {
-            this.count = count;
-        }
+    public void setAttributionText(String attributionText) {
+        this.attributionText = attributionText;
+    }
 
-        public List<MarvelCharacter> getMarvelCharacters() {
-            return marvelCharacters;
-        }
+    public String getAttributionHTML() {
+        return attributionHTML;
+    }
 
-        public void setResults(List<MarvelCharacter> marvelCharacters) {
-            this.marvelCharacters = marvelCharacters;
-        }
+    public void setAttributionHTML(String attributionHTML) {
+        this.attributionHTML = attributionHTML;
+    }
+
+    public String getEtag() {
+        return etag;
+    }
+
+    public void setEtag(String etag) {
+        this.etag = etag;
+    }
+
+    public MarvelApiData getMarvelApiData() {
+        return marvelApiData;
+    }
+
+    public void setMarvelApiData(MarvelApiData marvelApiData) {
+        this.marvelApiData = marvelApiData;
+    }
 }
