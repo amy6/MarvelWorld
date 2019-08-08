@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import androidx.annotation.Nullable;
+
 public class MarvelCharacter {
 
     @SerializedName("id")
@@ -129,4 +131,14 @@ public class MarvelCharacter {
         this.urls = urls;
     }
 
+    @Override public boolean equals(@Nullable Object obj) {
+        if (obj instanceof MarvelCharacter) {
+            MarvelCharacter marvelCharacter = (MarvelCharacter) obj;
+            return (id.equals(marvelCharacter.id) &&
+                    name.equals(marvelCharacter.name) &&
+                    description.equals(marvelCharacter.description) &&
+                    modified.equals(marvelCharacter.modified));
+        }
+        return false;
+    }
 }
