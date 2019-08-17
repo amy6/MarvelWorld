@@ -1,5 +1,8 @@
 package com.example.marvelworld.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -7,7 +10,7 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 
-public class MarvelCharacter {
+public class MarvelCharacter implements Parcelable {
 
     @SerializedName("id")
     @Expose
@@ -42,6 +45,43 @@ public class MarvelCharacter {
     @SerializedName("urls")
     @Expose
     private List<Url> urls = null;
+
+    protected MarvelCharacter(Parcel in) {
+        if (in.readByte() == 0) { id = null; } else { id = in.readInt(); }
+        name = in.readString();
+        description = in.readString();
+        modified = in.readString();
+        resourceURI = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) { dest.writeByte((byte) 0); } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(id);
+        }
+        dest.writeString(name);
+        dest.writeString(description);
+        dest.writeString(modified);
+        dest.writeString(resourceURI);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<MarvelCharacter> CREATOR = new Creator<MarvelCharacter>() {
+        @Override
+        public MarvelCharacter createFromParcel(Parcel in) {
+            return new MarvelCharacter(in);
+        }
+
+        @Override
+        public MarvelCharacter[] newArray(int size) {
+            return new MarvelCharacter[size];
+        }
+    };
 
     public Integer getId() {
         return id;
