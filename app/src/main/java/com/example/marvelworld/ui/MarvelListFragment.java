@@ -1,14 +1,6 @@
 package com.example.marvelworld.ui;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,12 +14,20 @@ import com.example.marvelworld.utils.Utils;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.RecyclerView;
+
 import static com.example.marvelworld.ui.MarvelListActivity.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MarvelListFragment extends Fragment {
+public class MarvelListFragment extends Fragment implements MarvelDataAdapter.OnMarvelCharacterClickListener {
 
     public static final String MARVEL_API_KEY_PUBLIC = BuildConfig.MARVEL_API_KEY_PUBLIC;
 
@@ -52,7 +52,7 @@ public class MarvelListFragment extends Fragment {
         recyclerView = view.findViewById(R.id.marvel_list);
         Utils.setupRecyclerView(recyclerView);
 
-        adapter = new MarvelDataAdapter();
+        adapter = new MarvelDataAdapter(this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -70,5 +70,10 @@ public class MarvelListFragment extends Fragment {
                 }
             }
         });
+    }
+
+    @Override public void onItemClick(int characterId) {
+        MarvelListFragmentDirections.ActionMarvelListFragmentToMarvelDetailFragment action = MarvelListFragmentDirections.actionMarvelListFragmentToMarvelDetailFragment(characterId);
+        NavHostFragment.findNavController(this).navigate(action);
     }
 }

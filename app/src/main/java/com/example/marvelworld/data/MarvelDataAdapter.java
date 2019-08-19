@@ -18,8 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MarvelDataAdapter extends ListAdapter<MarvelCharacter, MarvelDataAdapter.MarvelDataViewHolder> {
 
-    public MarvelDataAdapter() {
+    private OnMarvelCharacterClickListener itemClickListener;
+
+    public MarvelDataAdapter(OnMarvelCharacterClickListener clickListener) {
         super(new DiffItemCallback());
+        itemClickListener = clickListener;
     }
 
     @NonNull @Override public MarvelDataViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -32,6 +35,10 @@ public class MarvelDataAdapter extends ListAdapter<MarvelCharacter, MarvelDataAd
         if (marvelCharacter != null) {
             holder.bind(marvelCharacter);
         }
+    }
+
+    public interface OnMarvelCharacterClickListener {
+        void onItemClick(int characterId);
     }
 
     public static class DiffItemCallback extends DiffUtil.ItemCallback<MarvelCharacter> {
@@ -65,6 +72,16 @@ public class MarvelDataAdapter extends ListAdapter<MarvelCharacter, MarvelDataAd
                     .into(characterImage);
 
             name.setText(marvelCharacter.getName());
+
+            final int id = marvelCharacter.getId();
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    if (itemClickListener != null) {
+                        itemClickListener.onItemClick(id);
+                    }
+                }
+            });
         }
     }
 }
