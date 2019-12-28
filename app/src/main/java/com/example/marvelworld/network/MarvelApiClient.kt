@@ -10,7 +10,6 @@ object MarvelApiClient {
     private var retrofit: Retrofit? = null
     private val httpClient = OkHttpClient.Builder()
     private val loggingInterceptor = HttpLoggingInterceptor()
-    @JvmStatic
     val client: Retrofit?
         get() {
             if (retrofit == null) {

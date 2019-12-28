@@ -5,7 +5,6 @@ import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
 object DigestUtils {
-    @JvmStatic
     fun getMd5(time: Long, privateKey: String, publicKey: String): String {
         return try {
             val messageDigest = MessageDigest.getInstance("MD5")
