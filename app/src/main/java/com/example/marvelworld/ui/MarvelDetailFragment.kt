@@ -42,7 +42,7 @@ class MarvelDetailFragment : Fragment() {
             if (character != null) {
                 var imageUrl: String? = null
                 if (character.thumbnail != null) {
-                    imageUrl = character.thumbnail.path + "." + character.thumbnail.extension
+                    imageUrl = character.thumbnail!!.path + "." + character.thumbnail!!.extension
                 }
                 Log.d(MarvelListActivity.TAG, "Image url : $imageUrl")
                 Glide.with(characterImage!!.context)

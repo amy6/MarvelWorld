@@ -43,13 +43,13 @@ class MarvelDataAdapter(private val itemClickListener: OnMarvelCharacterClickLis
     inner class MarvelDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val characterImage: ImageView = itemView.findViewById(R.id.image)
         fun bind(marvelCharacter: MarvelCharacter) {
-            val imageUrl = marvelCharacter.thumbnail.path + "." + marvelCharacter.thumbnail.extension
+            val imageUrl = marvelCharacter.thumbnail?.path + "." + marvelCharacter.thumbnail?.extension
             Glide.with(characterImage.context)
                     .load(imageUrl)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(characterImage)
             val id = marvelCharacter.id
-            itemView.setOnClickListener { itemClickListener?.onItemClick(id) }
+            itemView.setOnClickListener { id?.let { it -> itemClickListener?.onItemClick(it) } }
         }
 
     }
