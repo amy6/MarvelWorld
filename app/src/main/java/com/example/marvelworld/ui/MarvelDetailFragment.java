@@ -30,7 +30,6 @@ public class MarvelDetailFragment extends Fragment {
     private TextView name;
 
     private int marvelCharacterId;
-    private MarvelDetailViewModel viewModel;
 
     public MarvelDetailFragment() {
         // Required empty public constructor
@@ -60,9 +59,9 @@ public class MarvelDetailFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         MarvelDetailViewModelFactory factory = new MarvelDetailViewModelFactory(MARVEL_API_KEY_PUBLIC, marvelCharacterId);
-        viewModel = ViewModelProviders.of(this, factory).get(MarvelDetailViewModel.class);
+        MarvelDetailViewModel viewModel = ViewModelProviders.of(this, factory).get(MarvelDetailViewModel.class);
 
-        viewModel.getMarvelCharacter(marvelCharacterId).observe(this, new Observer<MarvelCharacter>() {
+        viewModel.getMarvelCharacter().observe(this, new Observer<MarvelCharacter>() {
             @Override
             public void onChanged(MarvelCharacter character) {
                 if (character != null) {
