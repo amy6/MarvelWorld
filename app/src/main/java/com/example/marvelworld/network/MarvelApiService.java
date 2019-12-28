@@ -1,7 +1,6 @@
 package com.example.marvelworld.network;
 
 import com.example.marvelworld.model.MarvelApiResponse;
-import com.example.marvelworld.model.MarvelCharacter;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -15,9 +14,9 @@ public interface MarvelApiService {
                                                 @Query("apikey") String apiKey,
                                                 @Query("hash") String hash);
 
-    @GET("v1/public/characters/{characterId}")
-    MarvelCharacter getMarvelCharacter(@Query("ts") long timestamp,
-                                       @Query("apikey") String apiKey,
-                                       @Query("hash") String hash,
-                                       @Path("id") int characterId);
+    @GET("v1/public/characters/{id}")
+    Call<MarvelApiResponse> getMarvelCharacter(@Path("id") int characterId,
+                                               @Query("ts") long timestamp,
+                                               @Query("apikey") String apiKey,
+                                               @Query("hash") String hash);
 }
