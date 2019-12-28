@@ -27,9 +27,9 @@ class MarvelDataRepository(private val apiKey: String) {
         marvelApiService.getMarvelCharacters(ts, apiKey, hash)!!.enqueue(object : Callback<MarvelApiResponse?> {
             override fun onResponse(call: Call<MarvelApiResponse?>, response: Response<MarvelApiResponse?>) {
                 Log.d(MarvelListActivity.TAG, "API call successful.")
-                if (response.body() != null && response.body()!!.marvelApiData.marvelCharacters != null && response.body()!!.marvelApiData.marvelCharacters.size > 0) {
-                    Log.d(MarvelListActivity.TAG, "Characters fetched : " + response.body()!!.marvelApiData.marvelCharacters.size)
-                    marvelCharacters.postValue(response.body()!!.marvelApiData.marvelCharacters)
+                if (response.body() != null && response.body()!!.marvelApiData?.marvelCharacters != null && response.body()!!.marvelApiData?.marvelCharacters?.isNotEmpty()!!) {
+                    Log.d(MarvelListActivity.TAG, "Characters fetched : " + response.body()!!.marvelApiData?.marvelCharacters?.size)
+                    marvelCharacters.postValue(response.body()!!.marvelApiData?.marvelCharacters)
                 }
             }
 
@@ -51,8 +51,8 @@ class MarvelDataRepository(private val apiKey: String) {
             override fun onResponse(call: Call<MarvelApiResponse?>, response: Response<MarvelApiResponse?>) {
                 Log.d(MarvelListActivity.TAG, "API call successful.")
                 if (response.body() != null) {
-                    val character = response.body()!!.marvelApiData.marvelCharacters[0]
-                    Log.d(MarvelListActivity.TAG, "Details obtained for character : " + character.name)
+                    val character = response.body()!!.marvelApiData?.marvelCharacters?.get(0)
+                    Log.d(MarvelListActivity.TAG, "Details obtained for character : " + character?.name)
                     marvelCharacter.value = character
                 }
             }
